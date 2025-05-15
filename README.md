@@ -28,6 +28,17 @@ https://github.com/users/zocom-christoffer-wallenberg/projects/11/views/1
 * All input som skickas i url eller i body ska valideras i en middleware och ifall det är fel data ska ett felmeddelande skickas tillbaka.
 * Det ska enbart gå att lägga till produkter som finns i menyn, ifall någon annan produkt skickas med så ska ett felmeddelande skickas tillbaka. Även pris ska kontrolleras, allt detta ska göras i en middleware.
 * När ett konto skapas ska detta kopplas till ett slumpat användarid (här används fördelaktigt ett bibliotek) där användarid:et sedan kan användas för att hämta orderhistorik, användarnamn ska alltså ej skickas med i url för att hämta orderhistorik.
+* 🔐 Säkerhet – SQL-injektioner och lösenord
+När ni bygger ert API är det viktigt att tänka på säkerhet. Här är två saker ni måste göra:
+  - Lösenord ska hash:as med `bcrypt` innan de sparas i databasen. 
+  - Skydda databasen från attacker (SQL-injektioner)
+  - Alla databasfrågor ska göras med parametriserade queries, inte genom att stoppa in användardata direkt i SQL-strängen.
+    - ❌ Fel sätt (kan vara farligt): pool.query(`SELECT * FROM users WHERE id = ${userId}`)
+    - ✅ Rätt sätt (säkert):pool.query('SELECT * FROM users WHERE id = $1', [userId])
+
+Detta kallas för parametriserade queries och det skyddar er databas från SQL-injektion, en typ av attack där en användare försöker skriva in farlig kod i t.ex. ett formulärfält.
+
+
 
 **För Väl Godkänt:**
 * Allt i godkänt
