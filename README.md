@@ -43,7 +43,8 @@ Detta kallas för parametriserade queries och det skyddar er databas från SQL-i
 **För Väl Godkänt:**
 * Allt i godkänt
 * Kunna se pågående beställningar och tidigare beställningar (man kollar när beställningen lades (klockslag) gentemot vad klockan är nu. Här är det godkänt att använda något bibliotek för datum och tidshantering (ex. `moment.js` eller `date-fns`).
-* Ert projekt använder sig av en MVC-arkitektur.
+* Projektet ska använda en enkel MVC-struktur, med separata mappar för routes, controllers och databasmodellering.
+* Använd Swagger för att dokumentera ert API.
 
 ### Inlämning
 Inlämning sker på Canvas med en länk till ert Github repo med er kod senast fredag **23/5 23:59**. 
